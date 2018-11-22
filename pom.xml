@@ -4,7 +4,7 @@
 	<artifactId>erp_parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-  
+
 	<properties>
 		<hibernate.version>5.0.7.Final</hibernate.version>
 		<spring.version>4.2.4.RELEASE</spring.version>
@@ -13,9 +13,9 @@
 		<log4j.version>1.2.12</log4j.version>
 		<shiro.ver>1.2.3</shiro.ver>
 	</properties>
-  
- 
-  
+
+
+
 	<dependencies>
 
 
@@ -53,7 +53,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring.version}</version>
-		</dependency> 
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
@@ -77,7 +77,7 @@
 				<exclusion>
 					<groupId>javassist</groupId>
 					<artifactId>javassist</artifactId>
-				</exclusion>  		
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -85,39 +85,39 @@
 			<artifactId>struts2-spring-plugin</artifactId>
 			<version>${struts.version}</version>
 		</dependency>
-	  
-		 <!-- log start -->
+
+		<!-- log start -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
 		<!-- log end -->
-	 
+
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
 
-	 	<!-- 数据库驱动 -->
-		<dependency>  
-			<groupId>com.oracle</groupId>  
-			<artifactId>ojdbc6</artifactId>  
+		<!-- 数据库驱动 -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
 			<version>11.2.0.3</version>
-			<scope>runtime</scope> 
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -125,21 +125,21 @@
 			<version>5.1.6</version>
 			<scope>runtime</scope>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>1.1.37</version>
 		</dependency>
-	  
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.9</version>
 			<scope>test</scope>
 		</dependency>
-	  
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -156,28 +156,28 @@
 
 
 		<dependency>
-	        <groupId>org.apache.shiro</groupId>
-	        <artifactId>shiro-core</artifactId>
-	        <version>${shiro.ver}</version>
-	    </dependency>
-	
-	    <dependency>
-	        <groupId>org.apache.shiro</groupId>
-	        <artifactId>shiro-web</artifactId>
-	        <version>${shiro.ver}</version>
-	    </dependency>
-	
-	    <dependency>
-	        <groupId>org.apache.shiro</groupId>
-	        <artifactId>shiro-spring</artifactId>
-	        <version>${shiro.ver}</version>
-	    </dependency>
-	
-	    <dependency>
-	        <groupId>org.apache.shiro</groupId>
-	        <artifactId>shiro-aspectj</artifactId>
-	        <version>${shiro.ver}</version>
-	    </dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${shiro.ver}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${shiro.ver}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.ver}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-aspectj</artifactId>
+			<version>${shiro.ver}</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
 		<dependency>
@@ -207,19 +207,19 @@
 
 
 	</dependencies>
-  
-    <build>  
-	  <plugins>
-	      <plugin>  
-	          <groupId>org.apache.maven.plugins</groupId>  
-	          <artifactId>maven-compiler-plugin</artifactId>  
-	          <version>2.3.2</version>  
-	          <configuration>  
-	              <source>1.7</source>  
-	              <target>1.7</target>  
-	          </configuration>  
-	      </plugin>  
-	      <plugin>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
@@ -229,15 +229,15 @@
 					<path>/erp</path>
 					<uriEncoding>utf-8</uriEncoding>
 				</configuration>
-	  	  </plugin>
-	  </plugins>  
-    </build>
-  
-	
-    <modules>
-    	<module>erp_entity</module>
-    	<module>erp_dao</module>
-    	<module>erp_biz</module>
-    	<module>erp_web</module>
-    </modules>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<modules>
+		<module>erp_entity</module>
+		<module>erp_dao</module>
+		<module>erp_biz</module>
+		<module>erp_web</module>
+	</modules>
 </project>
