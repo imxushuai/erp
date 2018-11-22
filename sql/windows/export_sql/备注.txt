@@ -1,0 +1,4 @@
+oracle用户为：erpuser
+sql执行后
+	视图：	1
+	数据表：17
