@@ -1,0 +1,29 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../config/ehcache.xsd">
+    <!-- 配置临时文件目录位置 -->
+    <diskStore path="java.io.tmpdir"/>
+
+    <!--
+ 	   	相关属性配置：
+ 	   		maxElementsInMemory : 在内存中最多可存储的元素(即多少个JAVA对象)
+ 	   		eternal : 缓存的数据是否永久有效
+ 	   		timeToIdleSeconds : 最大空闲时间(单位：秒)，超时将清理缓存数据
+            timeToLiveSeconds : 最大有效时间(单位：秒)，超时将清理缓存数据
+            overflowToDisk : 内存溢出存入磁盘，即存入临时文件目录
+            maxElementsOnDisk : 存入磁盘的元素最大值
+            diskPersistent : 重启服务器时，磁盘上的数据是否持久化
+            diskExpiryThreadIntervalSeconds : 缓存清理线程的执行周期，即每多少秒清理一次多余的失效的数据
+            memoryStoreEvictionPolicy : 淘汰策略(LRU->最近最少优先。   FIFO->先进先出)
+     -->
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            overflowToDisk="true"
+            maxElementsOnDisk="10000000"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"
+    />
+</ehcache>

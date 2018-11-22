@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>盘盈盘亏管理</title>
+    <link rel="stylesheet" type="text/css" href="ui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
+    <script type="text/javascript" src="ui/jquery.min.js"></script>
+    <script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+    <script type="text/javascript" src="ui/date.js"></script>
+    <script type="text/javascript" src="ui/request.js"></script>
+    <script type="text/javascript" src="js/inventory.js"></script>
+</head>
+<body>
+<div id="search" class="easyui-panel" style="padding-left:4px;border-bottom:0px;">
+    <div style="height:2px;"></div>
+    <form id="searchForm">
+        登记日期：<input name="t1.createtime" class="easyui-datebox"> -> <input name="t2.createtime" class="easyui-datebox">
+        审核日期：<input name="t1.checktime" class="easyui-datebox"> -> <input name="t2.checktime" class="easyui-datebox">
+        类型：<input name="t1.type" class="easyui-combobox" data-options="
+			data: [{uuid:'',name:'全部'},{uuid:'1',name:'盘盈'},{uuid:'2',name:'盘亏'}], valueField:'uuid',textField:'name'
+		">
+
+        <button type="button" id="btnSearch">查询</button>
+    </form>
+    <div style="height:2px;"></div>
+</div>
+<table id="grid"></table>
+
+<!--盘盈盘亏登记窗口 -->
+<div id="addInventoryDlg" style="padding: 2px">
+    <form id="inventoryForm">
+        <table class="hovertable">
+            <tr>
+                <td>商品：</td>
+                <td>
+                    <input name="t.goodsuuid" class="easyui-combobox" data-options="
+                        url:'goods_list',valueField:'uuid',textField:'name',required:true
+                    ">
+                </td>
+            </tr>
+            <tr>
+                <td>仓库：</td>
+                <td>
+                    <input name="t.storeuuid" class="easyui-combobox" data-options="
+                        url:'store_list',valueField:'uuid',textField:'name',required:true
+                    ">
+                </td>
+            </tr>
+            <tr>
+                <td>数量：</td>
+                <td><input name="t.num" class="easyui-numberbox" required="true"></td>
+            </tr>
+            <tr>
+                <td>类型：</td>
+                <td>
+                    盘盈<input name="t.type" type="radio" value="1" class="easyui-validatebox" required="true">
+                    盘亏<input name="t.type" type="radio" value="2" class="easyui-validatebox" required="true">
+                </td>
+            </tr>
+            <tr>
+                <td>备注：</td>
+                <td><input name="t.remark" class="easyui-validatebox" required="true"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<!--盘盈盘亏审核窗口 -->
+<div id="checkInventoryDlg" style="padding: 2px">
+    <form id="checkInventoryForm">
+        <table class="hovertable">
+            <tr>
+                <td width="35%" class="bg">编号：</td>
+                <td width="65%" id="inventoryId">
+                    <input id="id" type="hidden" name="uuid">
+                </td>
+            </tr>
+            <tr>
+                <td class="bg">登记日期：</td>
+                <td id="inventoryTime"></td>
+            </tr>
+            <tr>
+                <td class="bg">商品：</td>
+                <td id="goodsname"></td>
+            </tr>
+            <tr>
+                <td class="bg">仓库：</td>
+                <td id="storename"></td>
+            </tr>
+            <tr>
+                <td class="bg">数量：</td>
+                <td id="num"></td>
+            </tr>
+            <tr>
+                <td class="bg">类型：</td>
+                <td id="inventoryType"></td>
+            </tr>
+            <tr>
+                <td class="bg">备注：</td>
+                <td id="inventoryRemark"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

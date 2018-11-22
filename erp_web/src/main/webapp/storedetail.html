@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>仓库库存管理</title>
+<link rel="stylesheet" type="text/css" href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="css/table.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+<script type="text/javascript" src="ui/date.js"></script>
+<script type="text/javascript" src="js/storeoper.js"></script>
+<script type="text/javascript" src="js/storedetail.js"></script>
+</head>
+<body>
+<div class="easyui-panel" style="padding-left:4px;border-bottom:0px;">
+	<div style="height:2px;"></div>
+	<form id="searchForm">
+			仓库：<input name="t1.storeuuid" class="easyui-combobox" data-options="
+	url:'store_list',textField:'name',valueField:'uuid'
+">
+	商品：<input name="t1.goodsuuid"  class="easyui-combobox" data-options="
+	url:'goods_list',textField:'name',valueField:'uuid'
+">
+		<button type="button" id="btnSearch">查询</button>
+	</form>
+	<div style="height:2px;"></div>
+</div>
+<table id="grid"></table>
+
+<div id="storedetailDlg" style="padding:2px" class="easyui-dialog" data-options="
+    width:600,height:400,title:'库存变动记录',modal:true,closed:true
+">
+	<table class="hovertable">
+		<tr>
+			<td width="15%" class="bg">商品名称</td>
+			<td width="35%" id="goodsname"></td>
+			<td width="15%" class="bg">仓库</td>
+			<td width="35%" id="storename"></td>
+		</tr>
+	</table>
+	<!-- 仓库库存变动记录grid -->
+	<table id="storedetaigrid">
+
+	</table>
+</div>
+</body>
+</html>

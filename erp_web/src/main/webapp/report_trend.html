@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>销售趋势表</title>
+    <link rel="stylesheet" type="text/css" href="ui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+    <script type="text/javascript" src="ui/jquery.min.js"></script>
+    <script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+    <script type="text/javascript" src="ui/echarts.js"></script>
+    <script type="text/javascript" src="js/report_trend.js"></script>
+</head>
+<body class="easyui-layout">
+<div data-options="region:'center',title:'销售统计表'" style="padding:4px;background-color:#eee">
+    <form id="searchForm">
+        选择年份：<input name="year" type="text">
+        <button type="button" id="btnSearch">查询</button>
+    </form>
+    <div style="height: 2px"></div>
+    <table id="grid"></table>
+</div>
+<div data-options="region:'east',title:'销售统计图',split:true" style="width:1200px;">
+    <div id="charts" style="min-width: 450px; height: 500px; max-width: 1200px; margin: 20px auto"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd
+		">
+
+	<!-- 邮件发送器 -->
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.163.com"/>
+		<property name="port" value="465" />
+		<!-- 邮件发送协议 -->
+		<property name="protocol" value="smtp" />
+		<property name="username" value="xs_fight@163.com"/>
+		<property name="password" value="qq1031893936"/>
+		<property name="javaMailProperties">
+			<props>
+				<!-- 需要验证发件人 -->
+				<prop key="mail.smtps.auth">true</prop>
+				<!-- 开启SSL协议加密 -->
+				<prop key="mail.smtp.ssl.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 邮件发送工具类 -->
+	<bean id="mailUtil" class="cn.itcast.erp.util.MailUtil">
+		<property name="sender" ref="javaMailSender" />
+		<property name="from" value="xs_fight@163.com"/>
+	</bean>
+</beans>
+	

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login.html" />
+		<property name="unauthorizedUrl" value="/error.html" />
+		<property name="filters">
+			<map>
+				<entry key="perms" value-ref="erpAuthorizationFilter"></entry>
+			</map>
+		</property>
+		<property name="filterChainDefinitions">
+			<value>
+				/error.html = anon
+				/login_*.action = anon
+				/login_* = anon
+				/emp_updatePwd.action=perms[]
+				/*_get.action=perms[]
+				/*_list.action=perms[]
+				/*_listByPage.action=perms[]
+				/*_myListByPage.action=perms[]
+
+				/goodstype.html=perms["商品类型"]
+				/goodstype_*.action=perms["商品类型"]
+
+				/goods.html=perms["商品"]
+				/goods_*.action=perms["商品"]
+
+				/store.html=perms["仓库"]
+				/store_*.action=perms["仓库"]
+
+				/supplier.html=perms["供应商管理","客户管理"]
+				/supplier_*.action=perms["供应商管理","客户管理"]
+
+				/dep.html=perms["部门"]
+				/dep_*.action=perms["部门"]
+
+				/emp.html=perms["员工"]
+				/emp_*.action=perms["员工"]
+
+				/orders.html=perms["采购申请","采购订单查询","采购订单审核","采购订单确认","采购订单入库","销售订单查询","销售订单录入","销售订单出库"]
+				/orders_*.action=perms["采购申请","采购订单查询","采购订单审核","采购订单确认","采购订单入库","销售订单查询","销售订单录入","销售订单出库"]
+				/orders_add.action=perms["采购申请",销售订单录入]
+				/orders_doCheck.action=perms["采购订单审核"]
+				/orders_doStart.action=perms["采购订单确认"]
+				/store_myList.action=perms["采购订单入库","销售订单出库"]
+				/orderdetail_doInStore=perms["采购订单入库"]
+				/orderdetail_doOutStore=perms["销售订单出库"]
+
+				/storedetail.html=perms["库存查询"]
+				/storeoper.html=perms["库存变动记录"]
+
+				/returnorders.html=perms["退货订单登记","退货订单查询","退货订单审核","退货订单出库"]
+				/returnorders_*.action=perms["退货订单登记","退货订单查询","退货订单审核","退货订单出库"]
+				/returnorders_add.action=perms["退货订单登记"]
+				/returnorders_doCheck.action=perms["退货订单审核"]
+				/returnorders_doOutStore.action=perms["退货订单出库"]
+
+				/pwd.html=perms["重置密码"]
+				/emp_updatePwd_reset.action=perms["重置密码"]
+				
+				/returnorders1.html=perms["销售退货登记","销售退货查询","销售退货审核","销售退货入库"]
+				/returnorders1_*.action=perms["销售退货登记","销售退货查询","销售退货审核","销售退货入库"]
+				/returnorders1_add.action=perms["销售退货登记"]
+				/returnorders1_doCheck.action=perms["销售退货审核"]
+				/returnorders1_doInStore.action=perms["销售退货入库"]
+
+				/inventory.html=perms["盘盈盘亏登记","盘盈盘亏审核","盘盈盘亏查询"]
+				/inventory_*.action=perms["盘盈盘亏登记","盘盈盘亏审核","盘盈盘亏查询"]
+				/inventory_add.action=perms["盘盈盘亏登记"]
+				/inventory_doCheck.action=perms["盘盈盘亏审核"]
+
+
+				/report_order.html=perms["销售统计表"]
+				/report_order*.action=perms["销售统计表"]
+
+				/report_trend.html=perms["销售趋势分析"]
+				/report_trend*.action=perms["销售趋势分析"]
+
+				/storealert.html=perms["库存预警"]
+				/storealert*.action=perms["库存预警"]
+
+
+				/role.html=perms["角色管理"]
+				/role*.action=perms["角色管理"]
+
+				/emp_roleSet.html=perms["员工角色设置"]
+				/emp_readEmpRoleList.action=perms["员工角色设置"]
+				/emp_updateEmpRoleList.action=perms["员工角色设置"]
+
+				/role_menuSet.html=perms["角色权限设置"]
+				/role_readRoleMenuList.action=perms["角色权限设置"]
+				/role_updateRoleMenuList.action=perms["角色权限设置"]
+
+				/*.html = authc
+				/*.action = authc
+				/* = authc
+			</value>
+		</property>
+	</bean>
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="erpRealm"></property>
+		<property name="cacheManager" ref="cacheManager"></property>
+	</bean>
+
+	<!-- 配置shiro缓存管理器 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml"></property>
+	</bean>
+
+	<!-- 配置自定的Realm -->
+	<bean id="erpRealm" class="cn.itcast.erp.realm.ErpRealm">
+		<property name="empBiz" ref="empBiz"></property>
+	</bean>
+
+	<!-- 注册自定义授权过滤器 -->
+	<bean id="erpAuthorizationFilter" class="cn.itcast.erp.filter.ErpAuthorizationFilter"></bean>
+
+
+</beans>
