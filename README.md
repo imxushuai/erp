@@ -10,6 +10,36 @@
 - 其他：Shiro，quartz，Apache POI，echars，highcharts ......
 
 ### 数据库（oracle）
+
+## docker
+
+我提供了一个完整的数据库docker容器
+
+docker hub地址：[erp-docker](https://hub.docker.com/repository/docker/imxushuai/erp-oracle)
+
+国内访问docker hub可能有点慢。
+
+1. 拉取容器
+
+```shell
+docker pull imxushuai/erp-oracle
+```
+
+2. 容器启动
+
+```shell
+docker run -d -p 1521:1521 -e ORACLE_ALLOW_REMOTE=true imxushuai/erp-oracle
+```
+
+3. 远程登录数据库
+
+使用navicat等工具连接数据库使用账号密码如下：
+
+账号:erpuser
+密码:123456
+
+
+## 自建数据库
 1. 创建表空间
 
 ```
